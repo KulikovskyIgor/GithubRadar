@@ -5,6 +5,21 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from './../actions/app.js';
+import {
+    Alert,
+    Nav,
+    NavItem,
+    Tabs,
+    Tab,
+    Row,
+    Col,
+    ListGroup,
+    ListGroupItem,
+    ButtonGroup,
+    Button,
+    Input,
+    Image
+    } from 'react-bootstrap';
 import ContentContainer from './content/content-container.js';
 import UsersMenuContainer from './users-menu/users-menu-container.js';
 
@@ -17,10 +32,14 @@ class App extends Component {
     render() {
         const {actions} = this.props;
         return (
-            <div>
-                <ContentContainer />
-                <UsersMenuContainer />
-            </div>
+            <Row>
+                <Col md={8}>
+                    <ContentContainer />
+                </Col>
+                <Col md={4}>
+                    <UsersMenuContainer />
+                </Col>
+            </Row>
         );
     }
 }
