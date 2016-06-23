@@ -1,22 +1,22 @@
 import * as AppConstants from './../constants/app.js';
 
 export function FETCH_USERS() {
-    return (dispatch, getState) => {
-        //fetch(``)
-        //    .then((response) => {
-        //        if (response.status !== 200) {
-        //            throw new Error(response.status);
-        //        }
-        //        return response.json();
-        //    })
-        //    .then(data => {
-        //
-        //    })
-        //    .catch(error => {
-        //        console.log(error);
-        //    }
-        //);
-        dispatch(SET_USERS(null));
+    return (dispatch, getStore) => {
+        const {repo} = getStore().app;
+        fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
+            .then((response) => {
+                if (response.status !== 200) {
+                    throw new Error(response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                dispatch(SET_USERS(data));
+            })
+            .catch(error => {
+                console.log(error);
+            }
+        );
     }
 }
 

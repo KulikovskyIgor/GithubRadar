@@ -11,7 +11,7 @@ import UsersMenuContainer from './users-menu/users-menu-container.js';
 class App extends Component {
 
     componentWillMount() {
-        this.props.actions.FETCH_USERS();
+        //this.props.actions.FETCH_USERS();
     }
 
     render() {

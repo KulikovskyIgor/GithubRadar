@@ -1,7 +1,8 @@
 import * as AppConstants from '../constants/app.js';
 
 const initSate = {
-    users: []
+    users: [],
+    repo: 'reactjs/redux'
 };
 
 export default function App(state = initSate, action) {
