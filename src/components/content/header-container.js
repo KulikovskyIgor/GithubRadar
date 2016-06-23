@@ -4,13 +4,14 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 class Content extends Component {
     render() {
         const {actions} = this.props;
         return (
             <div>
-                
+                <Button>sdfsdfsd</Button>
             </div>
         );
     }
