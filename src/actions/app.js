@@ -11,7 +11,15 @@ export function FETCH_USERS() {
                 return response.json();
             })
             .then(data => {
-                dispatch(SET_USERS(data));
+                const filteredUsers = _.reduce(data, (res, item) => {
+                    let isHasCommitsLastMonth = !_.chain(item.weeks)
+                        .takeRight(4)
+                        .every(['c', 0])
+                        .value();
+                    if (isHasCommitsLastMonth) res.push(item);
+                    return res;
+                }, []);
+                dispatch(SET_USERS(filteredUsers));
             })
             .catch(error => {
                 console.log(error);
@@ -23,6 +31,13 @@ export function FETCH_USERS() {
 export function SET_USERS(data) {
     return {
         type: AppConstants.SET_USERS,
+        data
+    }
+}
+
+export function SET_REPO(data) {
+    return {
+        type: AppConstants.SET_REPO,
         data
     }
 }

@@ -11,6 +11,10 @@ export default function App(state = initSate, action) {
             return Object.assign({}, state, {
                 users: action.data
             });
+        case AppConstants.SET_REPO:
+            return Object.assign({}, state, {
+                repo: action.data
+            });
         default:
             return state;
     }

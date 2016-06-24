@@ -47,8 +47,9 @@ class UserMenu extends Component {
                     </Row>
                     <Row>
                         <Col md={12}>
-                            {this.props.users.map(user => {
+                            {_.map(this.props.users, user => {
                                 return <UserItem
+                                    key={user.author.id}
                                     login={user.author.login}
                                     avatarUrl={user.author.avatar_url}
                                     />

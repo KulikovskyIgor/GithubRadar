@@ -20,13 +20,13 @@ import {
     Input,
     Image
     } from 'react-bootstrap';
-import ContentContainer from './content/content-container.js';
+import ContentContainer from './content/containers/content-container.js';
 import UsersMenuContainer from './users-menu/users-menu-container.js';
 
 class App extends Component {
 
     componentWillMount() {
-        this.props.actions.FETCH_USERS();
+        //this.props.actions.FETCH_USERS();
     }
 
     render() {

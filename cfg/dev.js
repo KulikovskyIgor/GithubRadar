@@ -9,11 +9,21 @@ let defaultSettings = require('./defaults');
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
-    entry: [
-        'webpack-dev-server/client?http://127.0.0.1:' + defaultSettings.port,
-        'webpack/hot/only-dev-server',
-        './src/index'
-    ],
+    entry: {
+        app: [
+            'webpack-dev-server/client?http://127.0.0.1:' + defaultSettings.port,
+            'webpack/hot/only-dev-server',
+            './src/index'
+        ],
+        vendors: [
+            'react',
+            'react-dom',
+            'redux',
+            'react-redux',
+            'lodash',
+            'classnames'
+        ]
+    },
     cache: true,
     devtool: 'eval-source-map',
     plugins: [
@@ -21,7 +31,18 @@ let config = Object.assign({}, baseConfig, {
         new webpack.NoErrorsPlugin(),
         new BowerWebpackPlugin({
             searchResolveModulesDirectories: false
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name     : 'vendors',
+            filename : 'vendors.js',
+            minChunks: Infinity
+        }),
+        new webpack.ProvidePlugin({
+            'window._': 'lodash',
+            _         : 'lodash',
+            'window.moment': 'moment',
+            moment: 'moment',
+        }),
     ],
     module: defaultSettings.getDefaultModules()
 });
