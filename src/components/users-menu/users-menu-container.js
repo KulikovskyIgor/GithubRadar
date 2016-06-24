@@ -1,27 +1,72 @@
 import React, {
-  Component,
-  PropTypes
+    Component,
+    PropTypes
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import UserItem from './components/user-item.js';
+import {
+    Alert,
+    Nav,
+    NavItem,
+    Tabs,
+    Tab,
+    Row,
+    Col,
+    ListGroup,
+    ListGroupItem,
+    ButtonGroup,
+    Button,
+    Input,
+    Image
+} from 'react-bootstrap';
 
 class UserMenu extends Component {
-  render() {
-    const {actions} = this.props;
-    return <div>UserMenu</div>;
-  }
+    render() {
+        return (
+            <Row className="users-menu">
+                <Col md={12}>
+                    <Row>
+                        <Col md={12}>
+                            15:38:51p
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={12}>
+                            <Row>
+                                <Col mdOffset={1} md={11}>
+                                    leaderboard
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col mdOffset={1} md={11}>
+                                    last 30 days
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={12}>
+                            {this.props.users.map(user => {
+                                return <UserItem
+                                    login={user.author.login}
+                                    avatarUrl={user.author.avatar_url}
+                                    />
+                            })}
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        );
+    }
 }
 
 UserMenu.propTypes = {
-  actions: PropTypes.object.isRequired
+    users: PropTypes.array
 };
-function mapStateToProps(state) {
-  const props = {};
-  return props;
-}
-function mapDispatchToProps(dispatch) {
-  const actions = {};
-  const actionMap = { actions: bindActionCreators(actions, dispatch) };
-  return actionMap;
-}
-export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
+
+UserMenu.defaultProps = {
+    users: []
+};
+
+export default connect()(UserMenu);
