@@ -39,13 +39,13 @@ class Content extends Component {
                         <Col md={8}>
                             <Input type="text"
                                    value={this.props.app.repo}
-                                   onChange={this.handleChangeRepo}
-                                   onKeyPress={this.handleFetchUsersByEnter}
+                                   onChange={this._handleChangeRepo}
+                                   onKeyPress={this._handleFetchUsersByEnter}
                                 />
                         </Col>
                         <Col xs={2}>
                             <Button
-                                onClick={this.props.actions.FETCH_USERS}
+                                onClick={this._fetchStatistic}
                                 >Search</Button>
                         </Col>
                     </Row>
@@ -54,14 +54,19 @@ class Content extends Component {
         );
     }
 
-    handleChangeRepo = (e) => {
+    _handleChangeRepo = (e) => {
         this.props.actions.SET_REPO(e.target.value);
     }
 
-    handleFetchUsersByEnter = (e) => {
+    _handleFetchUsersByEnter = (e) => {
         if (e.key === 'Enter') {
-            this.props.actions.FETCH_USERS();
+            this._fetchStatistic();
         }
+    }
+
+    _fetchStatistic = () => {
+        this.props.actions.FETCH_USERS();
+        this.props.actions.FETCH_COMMITS();
     }
 }
 

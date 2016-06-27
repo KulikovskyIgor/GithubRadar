@@ -28,6 +28,26 @@ export function FETCH_USERS() {
     }
 }
 
+export function FETCH_COMMITS() {
+    return (dispatch, getStore) => {
+        const {repo} = getStore().app;
+        fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
+            .then((response) => {
+                if (response.status !== 200) {
+                    throw new Error(response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            }
+        );
+    }
+}
+
 export function SET_USERS(data) {
     return {
         type: AppConstants.SET_USERS,

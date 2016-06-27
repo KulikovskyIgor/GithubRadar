@@ -5,13 +5,14 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import HeaderContainer from './header-container.js';
+import ChartContainer from './chart-container.js';
 
 class Content extends Component {
     render() {
-        const {actions} = this.props;
         return (
             <div>
                 <HeaderContainer />
+                <ChartContainer />
             </div>
         );
     }
