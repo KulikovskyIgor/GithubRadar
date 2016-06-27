@@ -18,7 +18,7 @@ import {
     Image
     } from 'react-bootstrap';
 
-export default class UserItem extends Component {
+export default class UserItemView extends Component {
 
     constructor(props) {
         super(props);
@@ -38,12 +38,12 @@ export default class UserItem extends Component {
     }
 }
 
-UserItem.propTypes = {
+UserItemView.propTypes = {
     login: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string
 }
 
-UserItem.defaultProps = {
+UserItemView.defaultProps = {
     login: null,
     avatarUrl: null
 }

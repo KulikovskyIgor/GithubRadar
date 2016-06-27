@@ -21,7 +21,8 @@ let config = Object.assign({}, baseConfig, {
             'redux',
             'react-redux',
             'lodash',
-            'classnames'
+            'classnames',
+            'react-chartjs'
         ]
     },
     cache: true,

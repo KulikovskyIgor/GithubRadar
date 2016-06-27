@@ -11,12 +11,12 @@ export function FETCH_USERS() {
                 return response.json();
             })
             .then(data => {
-                const filteredUsers = _.reduce(data, (res, item) => {
-                    let isHasCommitsLastMonth = !_.chain(item.weeks)
+                const filteredUsers = _.reduce(data, (res, user) => {
+                    let isHasCommitsLastMonth = !_.chain(user.weeks)
                         .takeRight(4)
                         .every(['c', 0])
                         .value();
-                    if (isHasCommitsLastMonth) res.push(item);
+                    if (isHasCommitsLastMonth) res.push(user);
                     return res;
                 }, []);
                 dispatch(SET_USERS(filteredUsers));
@@ -39,7 +39,7 @@ export function FETCH_COMMITS() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                dispatch(SET_COMMITS(data));
             })
             .catch(error => {
                 console.log(error);
@@ -51,6 +51,13 @@ export function FETCH_COMMITS() {
 export function SET_USERS(data) {
     return {
         type: AppConstants.SET_USERS,
+        data
+    }
+}
+
+export function SET_COMMITS(data) {
+    return {
+        type: AppConstants.SET_COMMITS,
         data
     }
 }

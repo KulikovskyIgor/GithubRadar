@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import HeaderContainer from './header-container.js';
-import ChartContainer from './chart-container.js';
+import HeaderContainer from './containers/header-container.js';
+import ChartContainer from './containers/chart-container.js';
 
 class Content extends Component {
     render() {

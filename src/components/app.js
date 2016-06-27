@@ -20,8 +20,8 @@ import {
     Input,
     Image
     } from 'react-bootstrap';
-import ContentContainer from './content/containers/content-container.js';
-import UsersMenuContainer from './users-menu/users-menu-container.js';
+import ContentContainer from './content/index.js';
+import LeftMenuContainer from './left-menu/index.js';
 
 class App extends Component {
 
@@ -37,12 +37,13 @@ class App extends Component {
                     <ContentContainer />
                 </Col>
                 <Col md={4}>
-                    <UsersMenuContainer users={this.props.app.users} />
+                    <LeftMenuContainer users={this.props.app.users} />
                 </Col>
             </Row>
         );
     }
 }
+
 function mapStateToProps(store, props) {
     return {app: store.app};
 }
