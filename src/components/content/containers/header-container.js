@@ -27,22 +27,22 @@ class HeaderContainer extends Component {
             <Row className="header-container">
                 <Col xs={12}>
                     <Row>
-                        <Col mdOffset={1} md={10}>
+                        <Col className="title" xs={12}>
                             <h3>github radar</h3>
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={2}>
-                            <h4>repo</h4>
+                        <Col className="repo" xs={2} xsOffset={1}>
+                            <h4>repo:</h4>
                         </Col>
-                        <Col md={8}>
+                        <Col className="repo-value" xs={6}>
                             <Input type="text"
                                    value={this.props.app.repo}
                                    onChange={this._handleChangeRepo}
                                    onKeyPress={this._handleFetchUsersByEnter}
                                 />
                         </Col>
-                        <Col xs={2}>
+                        <Col className="search" xs={2}>
                             <Button
                                 onClick={this._fetchStatistic}
                                 >Search</Button>

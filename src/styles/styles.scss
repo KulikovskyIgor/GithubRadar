@@ -1,5 +1,19 @@
-body{
-  #app{
+$color_0: #055ba7;
+$color_1: #0071A7;
+$color_2: #69CFF7;
+$color_3: #9EE0FA;
+$color_4: rgb(221, 255, 248);
+$color_5: #009AD0;
+
+@font-face {
+  font-family: "Lobster";
+  src: url("../fonts/Lobster-Regular.ttf");
+}
+
+body {
+  background: $color_2;
+  #app {
+    background: $color_2;
     .users-menu {
       .user {
         .avatar {
@@ -9,12 +23,74 @@ body{
       }
     }
 
-    .content-container{
-      .header-container{
+    .content-container {
+      $width: 900px;
+      width: $width;
+      min-width: $width;
 
+      .header-container {
+        font-family: Lobster;
+        .title {
+          text-align: center;
+          text-transform: uppercase;
+          color: $color_1;
+          h3 {
+            font-size: 2em;
+          }
+        }
+        .repo {
+          @extend .title;
+          padding-right: 0;
+          h4 {
+            font-size: 1.8em;
+            float: right;
+          }
+        }
+        .repo-value {
+          input {
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            border-bottom: 2px solid $color_3;
+            padding-left: 0;
+            color: $color_4;
+            background: $color_2;
+            padding-bottom: 3px;
+            font-size: 1.5em;
+          }
+        }
+        .search {
+          padding-left: 0;
+          button {
+            border: none;
+            box-shadow: none;
+            outline: none;
+            border-radius: 0;
+            color: $color_4;
+            background: $color_1;
+            &:active {
+              background: $color_0;
+            }
+          }
+        }
       }
-      .chart-container{
-
+      .chart-container {
+        .chart {
+          position: relative;
+          transform: translate(-50%);
+          margin-left: 50%;
+          z-index: 2;
+        }
+        .chart-background{
+          position: absolute;
+          top: 83px;
+          right: 253px;
+          z-index: 1;
+          width: 395px;
+          height: 395px;
+          background: $color_5;
+          border-radius: 50%;
+        }
       }
     }
   }

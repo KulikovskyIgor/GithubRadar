@@ -15,7 +15,8 @@ import {
     Button,
     Input,
     Image
-    } from 'react-bootstrap';
+} from 'react-bootstrap';
+import ChartBackgroundView from '../components/chart-background-view.js';
 
 class ChartContainer extends Component {
 
@@ -35,13 +36,33 @@ class ChartContainer extends Component {
                 scale: {
                     reverse: false,
                     gridLines: {
-                        color: ['rgba(69, 183, 205, 0.30)']
+                        display: false
+                    },
+                    angleLines: {
+                        color: '#fff',
+                        lineWidth: 1
+                    },
+                    pointLabels:{
+                        fontColor: '#fff',
+                        fontFamily: 'Lobster',
+                        fontSize: 16
                     },
                     ticks: {
+                        display: false,
                         beginAtZero: true
-                    },
-                    xAxes: {
-                        display: false
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: '#0071A7',
+                        fontFamily: 'Lobster',
+                        fontSize: 16
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 0
                     }
                 }
             }
@@ -67,11 +88,16 @@ class ChartContainer extends Component {
         this._initChart();
     }
 
+    componentWillUnmount() {
+        if (window.radarChart) window.radarChart.destroy();
+    }
+
     render() {
         return (
             <Row className="chart-container">
                 <Col xs={12}>
-                    <canvas className="chart" ref="chart" height="400" width="400"></canvas>
+                    <canvas className="chart" ref="chart" height="500" width="500"></canvas>
+                    <ChartBackgroundView />
                 </Col>
             </Row>
         );
@@ -89,11 +115,12 @@ class ChartContainer extends Component {
 
         _.forEach(groupedCommitsByDay, (val, key) => {
             let dataset = Object.assign({}, defDataset);
+            const color = this._getRandomColor();
 
             dataset.data = _.map(val, i => i[2]);
             dataset.label = this._getDay(+key);
-            dataset.backgroundColor = this._getRandomColor(.3);
-            dataset.borderColor = this._getRandomColor(.7);
+            dataset.backgroundColor = color.background;
+            dataset.borderColor = color.border;
 
             conf.data.datasets.push(dataset);
             conf.data.labels.push(this._getDay(+key));
@@ -106,7 +133,7 @@ class ChartContainer extends Component {
 
     _getEmptyLabels(commitsLength) {
         let labels = [];
-        for (let i = 0; i < commitsLength; i++) labels.push(``);
+        for (let i = 0; i < commitsLength; i++) labels.push(i > 9 ? i : `0${i}`);
         return labels;
     }
 
@@ -133,8 +160,12 @@ class ChartContainer extends Component {
         return Math.round(Math.random() * 255);
     }
 
-    _getRandomColor(opacity) {
-        return 'rgba(' + this._getRandomColorFactor() + ',' + this._getRandomColorFactor() + ',' + this._getRandomColorFactor() + ',' + (opacity || '.3') + ')';
+    _getRandomColor() {
+        const rgb = ([this._getRandomColorFactor(), this._getRandomColorFactor(), this._getRandomColorFactor()]).join();
+        return {
+            border: `rgba(${rgb},.7)`,
+            background: `rgba(${rgb},.3)`
+        }
     }
 }
 
