@@ -21,8 +21,7 @@ let config = Object.assign({}, baseConfig, {
             'redux',
             'react-redux',
             'lodash',
-            'classnames',
-            'react-chartjs'
+            'classnames'
         ]
     },
     cache: true,
@@ -41,8 +40,6 @@ let config = Object.assign({}, baseConfig, {
         new webpack.ProvidePlugin({
             'window._': 'lodash',
             _         : 'lodash',
-            'window.moment': 'moment',
-            moment: 'moment',
         }),
     ],
     module: defaultSettings.getDefaultModules()

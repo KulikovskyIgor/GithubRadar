@@ -4,16 +4,32 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {
+    Nav,
+    NavItem,
+    Tabs,
+    Tab,
+    Row,
+    Col,
+    ListGroup,
+    ListGroupItem,
+    Button,
+    Input,
+    Image
+} from 'react-bootstrap';
 import HeaderContainer from './containers/header-container.js';
 import ChartContainer from './containers/chart-container.js';
+
 
 class Content extends Component {
     render() {
         return (
-            <div>
-                <HeaderContainer />
-                <ChartContainer />
-            </div>
+            <Row className="content-container">
+                <Col xs={12}>
+                    <HeaderContainer />
+                    <ChartContainer />
+                </Col>
+            </Row>
         );
     }
 }

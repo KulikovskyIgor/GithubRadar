@@ -21,11 +21,10 @@ import {
     Image
 } from 'react-bootstrap';
 
-class Content extends Component {
+class HeaderContainer extends Component {
     render() {
-        const {actions} = this.props;
         return (
-            <Row>
+            <Row className="header-container">
                 <Col xs={12}>
                     <Row>
                         <Col mdOffset={1} md={10}>
@@ -85,4 +84,4 @@ function mergeProps(mapState, mapDispatch, ownProps) {
         }
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Content);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(HeaderContainer);
