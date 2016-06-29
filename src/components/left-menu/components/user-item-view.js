@@ -1,50 +1,26 @@
-import React, {
-    Component,
-    PropTypes
-} from 'react';
-import {
-    Alert,
-    Nav,
-    NavItem,
-    Tabs,
-    Tab,
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem,
-    ButtonGroup,
-    Button,
-    Input,
-    Image
-} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { Row, Col, Image } from 'react-bootstrap';
 
-export default class UserItemView extends Component {
+const UserItemView = ({login, avatarUrl, commitsProgress}) => {
+    return (
+        <Row className="user">
+            <Col xs={2}>
+                <Image className="avatar" src={avatarUrl} circle/>
+            </Col>
+            <Col xs={10}>
+                <Row>
+                    <Col xs={12}>
+                        <span className="login">{login}</span>
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <Row className="user">
-                <Col xs={2}>
-                    <Image className="avatar" src={this.props.avatarUrl} circle/>
-                </Col>
-                <Col xs={10}>
-                    <Row>
-                        <Col xs={12}>
-                            <span className="login">{this.props.login}</span>
-
-                            <div className="commits-progress">
-                                <div className="progress" style={{width: this.props.commitsProgress + `%`}}></div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        );
-    }
-}
+                        <div className="commits-progress">
+                            <div className="progress" style={{width: commitsProgress + `%`}}></div>
+                        </div>
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
+    );
+};
 
 UserItemView.propTypes = {
     login: PropTypes.string.isRequired,
@@ -57,3 +33,5 @@ UserItemView.defaultProps = {
     avatarUrl: null,
     commitsProgress: 0
 }
+
+export default UserItemView;

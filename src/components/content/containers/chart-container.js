@@ -1,21 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from './../../../actions/app.js';
 import Chart from 'chart.js/dist/Chart.bundle.min.js';
-import {
-    Nav,
-    NavItem,
-    Tabs,
-    Tab,
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem,
-    Button,
-    Input,
-    Image
-} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import ChartBackgroundView from '../components/chart-background-view.js';
 
 class ChartContainer extends Component {
@@ -68,25 +56,18 @@ class ChartContainer extends Component {
             }
         },
         defDataset: {
-            backgroundColor: "rgba(179,181,198,0.2)",
-            borderColor: "rgba(179,181,198,1)",
-            pointBackgroundColor: "rgba(179,181,198,1)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(179,181,198,1)",
             tension: .5,
             data: []
-        },
-        radarChart: null
+        }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps) {
         return (nextProps.app.users.length && nextProps.app.commits.length)
             && (nextProps.app.users.length != this.props.app.users.length
             || nextProps.app.commits.length != this.props.app.commits.length);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
         this._initChart();
     }
 
@@ -171,7 +152,7 @@ class ChartContainer extends Component {
     }
 }
 
-function mapStateToProps(store, props) {
+function mapStateToProps(store) {
     return {app: store.app};
 }
 function mapDispatchToProps(dispatch) {

@@ -1,25 +1,8 @@
-import React, {
-    Component,
-    PropTypes
-} from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from './../../../actions/app.js';
-import {
-    Alert,
-    Nav,
-    NavItem,
-    Tabs,
-    Tab,
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem,
-    ButtonGroup,
-    Button,
-    Input,
-    Image
-} from 'react-bootstrap';
+import { Row, Col, Input, Button } from 'react-bootstrap';
 
 class HeaderContainer extends Component {
     render() {
@@ -69,7 +52,7 @@ class HeaderContainer extends Component {
     }
 }
 
-function mapStateToProps(store, props) {
+function mapStateToProps(store) {
     return {app: store.app};
 }
 function mapDispatchToProps(dispatch) {

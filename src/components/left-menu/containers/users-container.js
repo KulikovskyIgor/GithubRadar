@@ -1,24 +1,7 @@
-import React, {
-    Component,
-    PropTypes
-} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
 import UserItemView from './../components/user-item-view.js';
-import {
-    Alert,
-    Nav,
-    NavItem,
-    Tabs,
-    Tab,
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem,
-    ButtonGroup,
-    Button,
-    Input,
-    Image
-} from 'react-bootstrap';
 
 class UserMenu extends Component {
     render() {
@@ -49,7 +32,7 @@ class UserMenu extends Component {
     }
 }
 
-function mapStateToProps(store, props) {
+function mapStateToProps(store) {
     return {app: store.app};
 }
 

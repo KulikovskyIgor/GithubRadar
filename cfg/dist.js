@@ -24,7 +24,6 @@ let config = Object.assign({}, baseConfig, {
         ]
     },
     cache: false,
-    devtool: 'sourcemap',
     plugins: [
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({

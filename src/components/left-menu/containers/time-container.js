@@ -1,24 +1,15 @@
-import React, {
-    Component
-} from 'react';
-import {
-    Nav,
-    NavItem,
-    Tabs,
-    Tab,
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem,
-    Button,
-    Input,
-    Image
-} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 export default class TimeContainer extends Component {
 
     constructor(props) {
         super(props);
+    }
+
+    state = {
+        time: ``,
+        interval: null
     }
 
     componentDidMount() {
@@ -31,11 +22,6 @@ export default class TimeContainer extends Component {
 
     componentWillUnmount() {
         clearInterval(this.state.interval);
-    }
-
-    state = {
-        time: ``,
-        interval: null
     }
 
     render() {
