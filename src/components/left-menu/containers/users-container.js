@@ -22,15 +22,21 @@ import {
 
 class UserMenu extends Component {
     render() {
+        const {users, usersStatistic} = this.props.app;
+        const sortedUsers = _.chain(users)
+            .sortBy(user => usersStatistic.commits[user.author.id])
+            .reverse()
+            .value();
+
         return (
             <Row className="users-container">
                 <Col md={12}>
-                    {_.map(this.props.app.users, user => {
+                    {_.map(sortedUsers, user => {
                         return <UserItemView
                             key={user.author.id}
                             login={user.author.login}
                             avatarUrl={user.author.avatar_url}
-                            commitsProgress={this._getCommitsProgress(user.author.id)}
+                            commitsProgress={this._getCommitsProgress(user.author.id, usersStatistic)}
                             />
                     })}
                 </Col>
@@ -38,8 +44,8 @@ class UserMenu extends Component {
         );
     }
 
-    _getCommitsProgress(userId) {
-        return ((this.props.app.usersStatistic.commits[userId] * 100) / this.props.app.usersStatistic.maxPerMonth);
+    _getCommitsProgress(userId, usersStatistic) {
+        return ((usersStatistic.commits[userId] * 100) / usersStatistic.maxPerMonth);
     }
 }
 

@@ -25,7 +25,7 @@ body {
         color: $color_4;
       }
       .leader-board-view {
-        border-bottom: 2px solid $color_4;
+        border-bottom: 2px solid $color_3;
         color: $color_4;
         .leaderboard{
           text-transform: uppercase;
@@ -53,7 +53,7 @@ body {
             z-index: 2;
           }
           .commits-progress{
-            margin-top: 5px;
+            margin-top: 4px;
             height: 40px;
             width: 100%;
             border-radius: 30px;

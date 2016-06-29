@@ -4,7 +4,7 @@ const initSate = {
     users: [],
     commits: [],
     usersStatistic: {},
-    repo: 'reactjs/redux'
+    repo: 'facebook/react'
 };
 
 export default function App(state = initSate, action) {
