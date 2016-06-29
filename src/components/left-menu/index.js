@@ -24,8 +24,8 @@ import LeaderBoardView from './components/leader-board-view.js';
 export default class LeftMenu extends Component {
     render() {
         return (
-            <Row className="users-menu">
-                <Col md={12}>
+            <Row className="left-menu-container">
+                <Col xs={12}>
                     <TimeContainer />
                     <LeaderBoardView />
                     <UsersContainer />

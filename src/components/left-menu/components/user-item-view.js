@@ -16,7 +16,7 @@ import {
     Button,
     Input,
     Image
-    } from 'react-bootstrap';
+} from 'react-bootstrap';
 
 export default class UserItemView extends Component {
 
@@ -25,13 +25,21 @@ export default class UserItemView extends Component {
     }
 
     render() {
-        return(
+        return (
             <Row className="user">
-                <Col md={2}>
-                    <Image className="avatar" src={this.props.avatarUrl} circle />
+                <Col xs={2}>
+                    <Image className="avatar" src={this.props.avatarUrl} circle/>
                 </Col>
-                <Col md={10}>
-                    {this.props.login}
+                <Col xs={10}>
+                    <Row>
+                        <Col xs={12}>
+                            <span className="login">{this.props.login}</span>
+
+                            <div className="commits-progress">
+                                <div className="progress" style={{width: this.props.commitsProgress + `%`}}></div>
+                            </div>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         );
@@ -40,10 +48,12 @@ export default class UserItemView extends Component {
 
 UserItemView.propTypes = {
     login: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string
+    avatarUrl: PropTypes.string,
+    commitsProgress: PropTypes.number
 }
 
 UserItemView.defaultProps = {
     login: null,
-    avatarUrl: null
+    avatarUrl: null,
+    commitsProgress: 0
 }

@@ -13,23 +13,65 @@ $color_5: #009AD0;
 body {
   background: $color_2;
   #app {
+
+    font-family: Lobster;
     background: $color_2;
-    .users-menu {
-      .user {
-        .avatar {
-          width: 50px;
-          height: 50px;
+
+    .left-menu-container {
+      margin-top: 30px;
+      .time-container {
+        text-align: center;
+        font-size: 2em;
+        color: $color_4;
+      }
+      .leader-board-view {
+        border-bottom: 2px solid $color_4;
+        color: $color_4;
+        .leaderboard{
+          text-transform: uppercase;
+          font-size: 1.5em;
+          padding-left: 10px;
+        }
+        .last-days{
+          @extend .leaderboard;
+        }
+      }
+      .users-container{
+        margin-top: 10px;
+        .user {
+          margin-top: 5px;
+          .avatar {
+            width: 50px;
+            height: 50px;
+          }
+          .login{
+            position: absolute;
+            font-size: 1.2em;
+            line-height: 45px;
+            color: #ddfff8;
+            padding-left: 10px;
+            z-index: 2;
+          }
+          .commits-progress{
+            margin-top: 5px;
+            height: 40px;
+            width: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            z-index: 1;
+            .progress{
+              height: 100%;
+              width: 100%;
+              background: $color_5;
+            }
+          }
         }
       }
     }
 
     .content-container {
-      $width: 900px;
-      width: $width;
-      min-width: $width;
-
+      margin-top: 15px;
       .header-container {
-        font-family: Lobster;
         .title {
           text-align: center;
           text-transform: uppercase;
@@ -81,15 +123,19 @@ body {
           margin-left: 50%;
           z-index: 2;
         }
-        .chart-background{
-          position: absolute;
+        .chart-background {
           top: 83px;
-          right: 253px;
+          position: absolute;
+          transform: translate(-50%);
+          margin-left: 50%;
           z-index: 1;
-          width: 395px;
-          height: 395px;
-          background: $color_5;
-          border-radius: 50%;
+          .circle {
+            margin-left: -28px;
+            width: 395px;
+            height: 395px;
+            background: $color_5;
+            border-radius: 50%;
+          }
         }
       }
     }

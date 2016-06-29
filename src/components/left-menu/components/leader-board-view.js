@@ -23,15 +23,15 @@ export default class LeaderBoardView extends Component {
 
     render() {
         return (
-            <Row>
+            <Row className="leader-board-view">
                 <Col md={12}>
                     <Row>
-                        <Col mdOffset={1} md={11}>
+                        <Col className="leaderboard" md={12}>
                             leaderboard
                         </Col>
                     </Row>
                     <Row>
-                        <Col mdOffset={1} md={11}>
+                        <Col className="last-days" md={12}>
                             last 30 days
                         </Col>
                     </Row>

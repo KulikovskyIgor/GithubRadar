@@ -42,7 +42,7 @@ class ChartContainer extends Component {
                         color: '#fff',
                         lineWidth: 1
                     },
-                    pointLabels:{
+                    pointLabels: {
                         fontColor: '#fff',
                         fontFamily: 'Lobster',
                         fontSize: 16
@@ -81,7 +81,9 @@ class ChartContainer extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return (nextProps.app.users.length && nextProps.app.commits.length);
+        return (nextProps.app.users.length && nextProps.app.commits.length)
+            && (nextProps.app.users.length != this.props.app.users.length
+            || nextProps.app.commits.length != this.props.app.commits.length);
     }
 
     componentDidUpdate(prevProps, prevState) {

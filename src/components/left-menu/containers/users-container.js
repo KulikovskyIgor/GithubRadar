@@ -23,18 +23,23 @@ import {
 class UserMenu extends Component {
     render() {
         return (
-            <Row>
+            <Row className="users-container">
                 <Col md={12}>
                     {_.map(this.props.app.users, user => {
                         return <UserItemView
                             key={user.author.id}
                             login={user.author.login}
                             avatarUrl={user.author.avatar_url}
+                            commitsProgress={this._getCommitsProgress(user.author.id)}
                             />
                     })}
                 </Col>
             </Row>
         );
+    }
+
+    _getCommitsProgress(userId) {
+        return ((this.props.app.usersStatistic.commits[userId] * 100) / this.props.app.usersStatistic.maxPerMonth);
     }
 }
 

@@ -32,14 +32,16 @@ class App extends Component {
     render() {
         const {actions} = this.props;
         return (
-            <Row>
-                <Col md={8}>
-                    <ContentContainer />
-                </Col>
-                <Col md={4}>
-                    <LeftMenuContainer users={this.props.app.users} />
-                </Col>
-            </Row>
+            <div className="container">
+                <Row>
+                    <Col md={8}>
+                        <ContentContainer />
+                    </Col>
+                    <Col md={4}>
+                        <LeftMenuContainer users={this.props.app.users} />
+                    </Col>
+                </Row>
+            </div>
         );
     }
 }

@@ -19,6 +19,7 @@ export function FETCH_USERS() {
                     if (isHasCommitsLastMonth) res.push(user);
                     return res;
                 }, []);
+                dispatch(SET_USERS_STATISTIC(filteredUsers));
                 dispatch(SET_USERS(filteredUsers));
             })
             .catch(error => {
@@ -45,6 +46,27 @@ export function FETCH_COMMITS() {
                 console.log(error);
             }
         );
+    }
+}
+
+export function SET_USERS_STATISTIC(users) {
+    let data = {
+        commits: {},
+        maxPerMonth: 0
+    };
+
+    _.forEach(users, user => {
+        let count = _.chain(user.weeks)
+            .takeRight(4)
+            .reduce((res, week) => res + week.c, 0)
+            .value();
+        data.commits[user.author.id] = count;
+        data.maxPerMonth = count > data.maxPerMonth ? count : data.maxPerMonth;
+    });
+
+    return {
+        type: AppConstants.SET_USERS_STATISTIC,
+        data
     }
 }
 

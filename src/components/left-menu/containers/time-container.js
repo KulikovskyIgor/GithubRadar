@@ -26,6 +26,7 @@ export default class TimeContainer extends Component {
             this.setState({time: this._getTime()});
         }, 1000);
         this.setState({interval: interval});
+        this.setState({time: this._getTime()});
     }
 
     componentWillUnmount() {
@@ -33,13 +34,13 @@ export default class TimeContainer extends Component {
     }
 
     state = {
-        time: null,
+        time: ``,
         interval: null
     }
 
     render() {
         return (
-            <Row>
+            <Row className="time-container">
                 <Col md={12}>
                     {this.state.time}
                 </Col>

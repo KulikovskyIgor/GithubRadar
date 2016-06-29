@@ -10,7 +10,9 @@ export default class ChartBackgroundView extends Component {
 
     render() {
         return (
-            <div className="chart-background"></div>
+            <div className="chart-background">
+                <div className="circle"></div>
+            </div>
         );
     }
 }
