@@ -1,13 +1,12 @@
 import * as AppConstants from './../constants/app.js';
+import { handleStatusCode } from '../utils/handle-status-code.js';
 
 export function FETCH_USERS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
         fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
+            .then(handleStatusCode)
             .then((response) => {
-                if (response.status !== 200) {
-                    throw new Error(response.status);
-                }
                 return response.json();
             })
             .then(data => {
@@ -33,10 +32,8 @@ export function FETCH_COMMITS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
         fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
+            .then(handleStatusCode)
             .then((response) => {
-                if (response.status !== 200) {
-                    throw new Error(response.status);
-                }
                 return response.json();
             })
             .then(data => {

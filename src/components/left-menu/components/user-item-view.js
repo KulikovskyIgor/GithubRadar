@@ -13,7 +13,7 @@ const UserItemView = ({login, avatarUrl, commitsProgress}) => {
                         <span className="login">{login}</span>
 
                         <div className="commits-progress">
-                            <div className="progress" style={{width: commitsProgress + `%`}}></div>
+                            <div className="progress" style={{width: `${commitsProgress}%`}}></div>
                         </div>
                     </Col>
                 </Row>

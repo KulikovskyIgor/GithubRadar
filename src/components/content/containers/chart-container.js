@@ -72,7 +72,7 @@ class ChartContainer extends Component {
     }
 
     componentWillUnmount() {
-        if (window.radarChart) window.radarChart.destroy();
+        if (this.radarChart) this.radarChart.destroy();
     }
 
     render() {
@@ -88,8 +88,8 @@ class ChartContainer extends Component {
 
     _initChart() {
         const chartConf = this._getChartConf(this.props.app.commits, this.state.chartConfig, this.state.defDataset);
-        if (window.radarChart) window.radarChart.destroy();
-        window.radarChart = new Chart(this.refs.chart, chartConf);
+        if (this.radarChart) window.radarChart.destroy();
+        this.radarChart = new Chart(this.refs.chart, chartConf);
     }
 
     _getChartConf(commits, chartConf, defDataset) {

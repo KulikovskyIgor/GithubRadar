@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as AppActions from './../actions/app.js';
 import { Row, Col } from 'react-bootstrap';
 import ContentContainer from './content/index.js';
 import LeftMenuContainer from './left-menu/index.js';
@@ -28,18 +26,4 @@ function mapStateToProps(store) {
     return {app: store.app};
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(AppActions, dispatch);
-}
-
-function mergeProps(mapState, mapDispatch, ownProps) {
-    return {
-        ...mapState,
-        ...ownProps,
-        actions: {
-            ...mapDispatch
-        }
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(App);
+export default connect(mapStateToProps)(App);
