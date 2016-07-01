@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <Loader loaded={this.props.app.isLoaded} />
+                <Loader loaded={this.props.app.isLoaded} color="white"/>
                 <Row>
                     <Col md={8}>
                         <ContentContainer />
