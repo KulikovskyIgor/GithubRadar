@@ -4,6 +4,9 @@ import { handleStatusCode } from '../utils/handle-status-code.js';
 export function FETCH_USERS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
+
+        dispatch(TOGGLE_LOADER());
+
         fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
             .then(handleStatusCode)
             .then((response) => {
@@ -20,8 +23,10 @@ export function FETCH_USERS() {
                 }, []);
                 dispatch(SET_USERS_STATISTIC(filteredUsers));
                 dispatch(SET_USERS(filteredUsers));
+                dispatch(TOGGLE_LOADER());
             })
             .catch(error => {
+                dispatch(TOGGLE_LOADER());
                 console.log(error);
             }
         );
@@ -31,6 +36,9 @@ export function FETCH_USERS() {
 export function FETCH_COMMITS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
+
+        dispatch(TOGGLE_LOADER());
+
         fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
             .then(handleStatusCode)
             .then((response) => {
@@ -38,8 +46,10 @@ export function FETCH_COMMITS() {
             })
             .then(data => {
                 dispatch(SET_COMMITS(data));
+                dispatch(TOGGLE_LOADER());
             })
             .catch(error => {
+                dispatch(TOGGLE_LOADER());
                 console.log(error);
             }
         );
@@ -85,5 +95,11 @@ export function SET_REPO(data) {
     return {
         type: AppConstants.SET_REPO,
         data
+    }
+}
+
+export function TOGGLE_LOADER() {
+    return {
+        type: AppConstants.TOGGLE_LOADER
     }
 }
