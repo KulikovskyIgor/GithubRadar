@@ -1,23 +1,54 @@
-/*eslint-env node, mocha */
-/*global expect */
-/*eslint no-console: 0*/
-'use strict';
+import React from 'react';
+import { Provider } from 'react-redux';
+import TestUtils from 'react-addons-test-utils';
+import expect from 'expect';
+import expectJSX from 'expect-jsx';
 
-// Uncomment the following lines to use the react test utilities
-// import React from 'react/addons';
-// const TestUtils = React.addons.TestUtils;
-import createComponent from 'helpers/shallowRenderHelper';
+expect.extend(expectJSX);
+//
+//import store from '../../src/stores';
+import UsersContainer from '../../src/components/left-menu/containers/users-container.js';
+import UsersItem from '../../src/components/left-menu/components/user-item-view.js';
 
-import Main from 'components/Main';
+import { Row, Col, Image } from 'react-bootstrap';
 
-describe('MainComponent', () => {
-  let MainComponent;
+describe('UsersContainer', () => {
 
-  beforeEach(() => {
-    MainComponent = createComponent(Main);
-  });
+    it('Should render users container without users', () => {
 
-  it('should have its component name as default className', () => {
-    expect(MainComponent.props.className).to.equal('index');
-  });
+        const renderer = TestUtils.createRenderer();
+        renderer.render(<UsersItem login={'super-user'} avatarUrl={'avatar'} commitsProgress={100}/>);
+        const actual = renderer.getRenderOutput();
+
+        const expected = (
+            <Row className="user">
+                <Col xs={2}>
+                    <Image className="avatar" src="avatar" circle/>
+                </Col>
+                <Col xs={10}>
+                    <Row>
+                        <Col xs={12}>
+                            <span className="login">super-user</span>
+
+                            <div className="commits-progress">
+                                <div className="progress" style={{width: `100%`}}></div>
+                            </div>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        );
+
+        expect(actual).toEqualJSX(expected);
+
+        //let component = TestUtils.renderIntoDocument(
+        //    <Provider store={store()}>
+        //        <UsersContainer />
+        //    </Provider>
+        //);
+        //
+        //console.log('comp', component);
+        //console.log('getWrappedInstance', component.getWrappedInstance);
+
+    });
 });
