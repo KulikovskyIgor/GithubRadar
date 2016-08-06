@@ -3,14 +3,9 @@ import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import UsersContainer from '../../../../src/components/left-menu/containers/users-container.js';
 
-describe('UsersContainer', () => {
+describe('UsersContainer 2', () => {
 
-    it('Should render users container without users', () => {
-        const renderer = TestUtils.createRenderer();
-        renderer.render(<UsersContainer />);
-        const actual = renderer.getRenderOutput();
-        console.log('actual', actual);
-
+    it('Should render users container without users 2', () => {
         expect(true).toEqual(true);
     });
 });

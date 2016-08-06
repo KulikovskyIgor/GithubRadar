@@ -4,7 +4,7 @@ import { handleStatusCode } from '../utils/handle-status-code.js';
 export function FETCH_USERS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
-        fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
+        return fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
             .then(handleStatusCode)
             .then((response) => {
                 return response.json();
@@ -31,7 +31,7 @@ export function FETCH_USERS() {
 export function FETCH_COMMITS() {
     return (dispatch, getStore) => {
         const {repo} = getStore().app;
-        fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
+        return fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
             .then(handleStatusCode)
             .then((response) => {
                 return response.json();
