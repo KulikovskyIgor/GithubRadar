@@ -4,11 +4,12 @@ const initSate = {
     users: [],
     commits: [],
     usersStatistic: {},
-    repo: 'facebook/react'
+    repo: 'facebook/react',
+    isLoaded: true
 };
 
 export default function App(state = initSate, action) {
-    switch (action.type) {
+  switch (action.type) {
         case AppConstants.SET_USERS:
             return Object.assign({}, state, {
                 users: action.data
@@ -24,6 +25,10 @@ export default function App(state = initSate, action) {
         case AppConstants.SET_REPO:
             return Object.assign({}, state, {
                 repo: action.data
+            });
+        case AppConstants.TOGGLE_LOADER:
+            return Object.assign({}, state, {
+                isLoaded: !state.isLoaded
             });
         default:
             return state;

@@ -4,10 +4,21 @@ $color_2: #69CFF7;
 $color_3: #9EE0FA;
 $color_4: rgb(221, 255, 248);
 $color_5: #009AD0;
+$color_6: rgba(0, 154, 208, .30);
 
 @font-face {
   font-family: "Lobster";
   src: url("../fonts/Lobster-Regular.ttf");
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $color_6;
+  z-index: 9999;
 }
 
 body {
