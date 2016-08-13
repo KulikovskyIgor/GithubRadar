@@ -7,7 +7,7 @@ export function FETCH_USERS() {
 
         dispatch(TOGGLE_LOADER());
 
-        fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
+        return fetch(`https://api.github.com/repos/${repo}/stats/contributors`)
             .then(handleStatusCode)
             .then((response) => {
                 return response.json();
@@ -39,7 +39,7 @@ export function FETCH_COMMITS() {
 
         dispatch(TOGGLE_LOADER());
 
-        fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
+        return fetch(`https://api.github.com/repos/${repo}/stats/punch_card`)
             .then(handleStatusCode)
             .then((response) => {
                 return response.json();
