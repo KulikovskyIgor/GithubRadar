@@ -1,8 +1,8 @@
 # github-radar
 
 _It is a demo project that based on:_
--react
--redux
+- react
+- redux
 
 _You can run it like this:_
 ```
