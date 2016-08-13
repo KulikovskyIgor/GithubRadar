@@ -8,8 +8,7 @@ const initSate = {
 };
 
 export default function App(state = initSate, action) {
-  console.log(state,action);
-    switch (action.type) {
+  switch (action.type) {
         case AppConstants.SET_USERS:
             return Object.assign({}, state, {
                 users: action.data
